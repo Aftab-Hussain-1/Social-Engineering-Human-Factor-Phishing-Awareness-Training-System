@@ -1,0 +1,89 @@
+OperationalError
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: employee_behavior_report
+[SQL: SELECT employee_behavior_report.id AS employee_behavior_report_id, employee_behavior_report.user_id AS employee_behavior_report_user_id, employee_behavior_report.quiz_result_id AS employee_behavior_report_quiz_result_id, employee_behavior_report.behavior_assessment AS employee_behavior_report_behavior_assessment, employee_behavior_report.risk_indicators AS employee_behavior_report_risk_indicators, employee_behavior_report.recommendations AS employee_behavior_report_recommendations, employee_behavior_report.overall_rating AS employee_behavior_report_overall_rating, employee_behavior_report.created_at AS employee_behavior_report_created_at 
+FROM employee_behavior_report 
+WHERE employee_behavior_report.user_id = ? ORDER BY employee_behavior_report.created_at DESC]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+Traceback (most recent call last)
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+self.dialect.do_execute(
+^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+cursor.execute(statement, parameters)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The above exception was the direct cause of the following exception:
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 1536, in __call__
+return self.wsgi_app(environ, start_response)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 1514, in wsgi_app
+response = self.handle_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+response = self.full_dispatch_request()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+rv = self.handle_user_exception(e)
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+rv = self.dispatch_request()
+     ^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+return current_app.ensure_sync(func)(*args, **kwargs)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/app/routes.py", line 864, in my_behavior_reports
+reports = EmployeeBehaviorReport.query.filter_by(user_id=current_user.id).order_by(EmployeeBehaviorReport.created_at.desc()).all()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+return self._iter().all()  # type: ignore
+       ^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                              
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+return self._execute_internal(
+       
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+result: Result[Any] = compile_state_cls.orm_execute_statement(
+                      
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+result = conn.execute(
+         
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+return meth(
+       
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+return connection._execute_clauseelement(
+       
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+ret = self._execute_context(
+      
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+return self._exec_single_context(
+       
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+self._handle_dbapi_exception(
+^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+self.dialect.do_execute(
+^
+File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+cursor.execute(statement, parameters)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: employee_behavior_report
+[SQL: SELECT employee_behavior_report.id AS employee_behavior_report_id, employee_behavior_report.user_id AS employee_behavior_report_user_id, employee_behavior_report.quiz_result_id AS employee_behavior_report_quiz_result_id, employee_behavior_report.behavior_assessment AS employee_behavior_report_behavior_assessment, employee_behavior_report.risk_indicators AS employee_behavior_report_risk_indicators, employee_behavior_report.recommendations AS employee_behavior_report_recommendations, employee_behavior_report.overall_rating AS employee_behavior_report_overall_rating, employee_behavior_report.created_at AS employee_behavior_report_created_at
+FROM employee_behavior_report
+WHERE employee_behavior_report.user_id = ? ORDER BY employee_behavior_report.created_at DESC]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+The debugger caught an exception in your WSGI application. You can now look at the traceback which led to the error.
+To switch between the interactive traceback and the plaintext one, you can click on the "Traceback" headline. From the text traceback you can also create a paste of it.
+
+Brought to you by DON'T PANIC, your friendly Werkzeug powered traceback interpreter.

@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+        <h1 style="margin: 0; font-size: 2.2em;">📊 My Behavior Reports</h1>
+        <p style="margin: 10px 0 0 0; opacity: 0.9;">Track your cybersecurity assessment progress over time</p>
+    </div>
+
+    {% if reports %}
+        <div style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden;">
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: #f8f9fa;">
+                        <tr>
+                            <th style="padding: 20px; text-align: left; border-bottom: 2px solid #dee2e6;">Date</th>
+                            <th style="padding: 20px; text-align: left; border-bottom: 2px solid #dee2e6;">Quiz Score</th>
+                            <th style="padding: 20px; text-align: left; border-bottom: 2px solid #dee2e6;">Rating</th>
+                            <th style="padding: 20px; text-align: left; border-bottom: 2px solid #dee2e6;">Assessment</th>
+                            <th style="padding: 20px; text-align: center; border-bottom: 2px solid #dee2e6;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in reports %}
+                        <tr style="border-bottom: 1px solid #f0f0f0;">
+                            <td style="padding: 20px;">{{ report.created_at.strftime('%m/%d/%Y') }}</td>
+                            <td style="padding: 20px; font-weight: bold; color: #667eea;">{{ "%.1f"|format(report.quiz_result.score) }}%</td>
+                            <td style="padding: 20px;">
+                                <span style="padding: 6px 12px; border-radius: 15px; font-size: 0.9em; font-weight: bold;
+                                    {% if report.overall_rating == 'Excellent' %}background: #d4edda; color: #155724;
+                                    {% elif report.overall_rating == 'Good' %}background: #cce7ff; color: #004085;
+                                    {% elif report.overall_rating == 'Fair' %}background: #fff3cd; color: #856404;
+                                    {% else %}background: #f8d7da; color: #721c24;{% endif %}">
+                                    {{ report.overall_rating }}
+                                </span>
+                            </td>
+                            <td style="padding: 20px; max-width: 300px;">
+                                <p style="margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    {{ report.behavior_assessment[:80] }}...
+                                </p>
+                            </td>
+                            <td style="padding: 20px; text-align: center;">
+                                <a href="{{ url_for('main.view_behavior_report', report_id=report.id) }}" 
+                                   style="background: #667eea; color: white; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 0.9em;">
+                                    View Details
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div style="background: white; padding: 60px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+            <h3 style="color: #6c757d; margin-bottom: 15px;">No Behavior Reports Yet</h3>
+            <p style="color: #6c757d; margin-bottom: 30px;">Take a cybersecurity quiz to generate your first behavior report!</p>
+            <a href="{{ url_for('main.quiz') }}" 
+               style="background: #667eea; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px;">
+                Take Assessment
+            </a>
+        </div>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('main.dashboard') }}" 
+           style="background: #6c757d; color: white; padding: 12px 30px; text-decoration: none; border-radius: 25px;">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}

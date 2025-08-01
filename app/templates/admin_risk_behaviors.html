@@ -1,0 +1,189 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  h2 {
+    text-align: center;
+    color: #00cec9;
+    margin-bottom: 30px;
+  }
+
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    background: rgba(45, 52, 54, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 4px solid #00cec9;
+  }
+
+  .stat-number {
+    font-size: 2em;
+    color: #00cec9;
+    font-weight: bold;
+  }
+
+  .stat-label {
+    color: #ecf0f1;
+    margin-top: 5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(45, 52, 54, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #34495e;
+  }
+
+  th {
+    background: rgba(0, 206, 201, 0.2);
+    color: #00cec9;
+    font-weight: bold;
+  }
+
+  td {
+    color: #ecf0f1;
+  }
+
+  .risk-low { color: #2ecc71; }
+  .risk-medium { color: #f39c12; }
+  .risk-high { color: #e74c3c; }
+
+  .behavior-type {
+    background: rgba(0, 206, 201, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .pagination-container {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .pagination {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(45, 52, 54, 0.8);
+    padding: 15px 25px;
+    border-radius: 25px;
+  }
+
+  .pagination a, .pagination span {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #00cec9;
+    text-decoration: none;
+  }
+
+  .pagination a:hover {
+    background-color: #00cec9;
+    color: #2d3436;
+  }
+
+  .pagination .current {
+    background-color: #00cec9;
+    color: #2d3436;
+  }
+
+  .pagination .disabled {
+    color: #7f8c8d;
+    cursor: not-allowed;
+  }
+</style>
+
+<h2>⚠️ Risk Behaviors</h2>
+
+<div class="stats-container">
+  <div class="stat-card">
+    <div class="stat-number">{{ behaviors.total }}</div>
+    <div class="stat-label">Total Behaviors</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ behaviors.items | selectattr('risk_score', 'ge', 40) | list | length }}</div>
+    <div class="stat-label">High Risk</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ behaviors.items | map(attribute='risk_score') | sum }}</div>
+    <div class="stat-label">Total Risk Points</div>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>User</th>
+    <th>Behavior</th>
+    <th>Domain</th>
+    <th>Risk Score</th>
+    <th>Date</th>
+  </tr>
+  {% for behavior in behaviors.items %}
+  <tr>
+    <td>{{ ((behaviors.page - 1) * behaviors.per_page) + loop.index }}</td>
+    <td>{{ behavior.user.username if behavior.user else 'Anonymous' }}</td>
+    <td>
+      <span class="behavior-type">
+        {{ behavior.behavior_type.replace('_', ' ').title() }}
+      </span>
+    </td>
+    <td>{{ behavior.domain or 'N/A' }}</td>
+    <td class="{% if behavior.risk_score >= 40 %}risk-high{% elif behavior.risk_score >= 20 %}risk-medium{% else %}risk-low{% endif %}">
+      {{ behavior.risk_score }}
+    </td>
+    <td>{{ behavior.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<!-- Pagination -->
+<div class="pagination-container">
+  <div class="pagination">
+    {% if behaviors.has_prev %}
+      <a href="{{ url_for('main.risk_behaviors', page=1) }}">⏮️ First</a>
+      <a href="{{ url_for('main.risk_behaviors', page=behaviors.prev_num) }}">⬅️ Previous</a>
+    {% else %}
+      <span class="disabled">⏮️ First</span>
+      <span class="disabled">⬅️ Previous</span>
+    {% endif %}
+
+    {% for page_num in behaviors.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if page_num != behaviors.page %}
+          <a href="{{ url_for('main.risk_behaviors', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <span class="current">{{ page_num }}</span>
+        {% endif %}
+      {% else %}
+        <span>…</span>
+      {% endif %}
+    {% endfor %}
+
+    {% if behaviors.has_next %}
+      <a href="{{ url_for('main.risk_behaviors', page=behaviors.next_num) }}">Next ➡️</a>
+      <a href="{{ url_for('main.risk_behaviors', page=behaviors.pages) }}">Last ⏭️</a>
+    {% else %}
+      <span class="disabled">Next ➡️</span>
+      <span class="disabled">Last ⏭️</span>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
