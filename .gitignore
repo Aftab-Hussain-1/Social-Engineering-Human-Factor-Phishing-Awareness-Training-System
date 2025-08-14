@@ -171,7 +171,6 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-*.db
 *.sqlite
 *.sqlite3
 gtk3-runtime.tar.zst
