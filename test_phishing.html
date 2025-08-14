@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Phishing Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .instructions {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Phishing Detection Extension Test Page</h1>
+        
+        <div class="instructions">
+            <h3>📋 Testing Instructions:</h3>
+            <ol>
+                <li>Load the Chrome extension in Developer Mode</li>
+                <li>Navigate to a suspicious domain (e.g., paypal-security.com, amazon-login.net)</li>
+                <li>The extension should automatically show a phishing warning popup</li>
+                <li>Test the "Trust This Site", "Report", and "Dismiss" buttons</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 Suspicious Domain Patterns That Trigger Warnings:</h3>
+            <ul>
+                <li><strong>IP Addresses:</strong> 192.168.1.1, 10.0.0.1</li>
+                <li><strong>Suspicious TLDs:</strong> example.tk, test.ml, fake.ga, phish.cf</li>
+                <li><strong>Numbers in domains:</strong> paypal123.com, amazon456.net</li>
+                <li><strong>Long domains:</strong> verylongdomainnamethatisunusual.com</li>
+                <li><strong>Brand impersonation:</strong> paypal-security.com, amazon-login.net, google-auth.com, microsoft-login.net</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 Manual Test Triggers:</h3>
+            <div class="warning">
+                <strong>Note:</strong> These buttons simulate the extension functionality for testing purposes.
+            </div>
+            <button onclick="simulatePhishingWarning()">🚨 Simulate Phishing Warning</button>
+            <button onclick="testContentScript()">🔧 Test Content Script</button>
+        </div>
+
+        <div class="test-section">
+            <h3>✅ Expected Behavior:</h3>
+            <ul>
+                <li>Extension badge should show ⚠️ on suspicious sites</li>
+                <li>Phishing warning popup should appear automatically</li>
+                <li>Warning should have red background with warning icon</li>
+                <li>Three buttons: "Dismiss", "Trust This Site", "Report"</li>
+                <li>Clicking "Trust This Site" should whitelist the domain</li>
+                <li>Clicking "Report" should log the incident</li>
+                <li>Clicking "Dismiss" should close the warning</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function simulatePhishingWarning() {
+            // This simulates what the content script would do
+            const indicators = [
+                'Suspicious domain pattern detected',
+                'Domain contains suspicious number patterns',
+                'Potential brand impersonation attempt'
+            ];
+            
+            // Create a mock phishing warning
+            showMockWarning(indicators);
+        }
+
+        function showMockWarning(indicators) {
+            // Remove existing warning if present
+            const existingWarning = document.getElementById('mock-phishing-warning');
+            if (existingWarning) {
+                existingWarning.remove();
+            }
+
+            const overlay = document.createElement('div');
+            overlay.id = 'mock-phishing-warning';
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 999999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            `;
+
+            const warning = document.createElement('div');
+            warning.style.cssText = `
+                background: linear-gradient(135deg, #e74c3c, #c0392b);
+                color: white;
+                padding: 30px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                max-width: 500px;
+                width: 90%;
+            `;
+
+            const indicatorsHtml = indicators.map(indicator => 
+                `<div style="margin: 8px 0; padding: 8px; background: rgba(255,255,255,0.1); border-radius: 5px; font-size: 14px;">• ${indicator}</div>`
+            ).join('');
+
+            warning.innerHTML = `
+                <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+                <h2 style="color: #fff; font-size: 24px; margin: 0 0 15px 0;">PHISHING WARNING</h2>
+                <p style="font-size: 16px; margin: 15px 0; line-height: 1.4;">
+                    This page may be impersonating a legitimate service.<br>
+                    Issues detected: Suspicious domain pattern detected
+                </p>
+                <div style="margin: 20px 0; text-align: left;">
+                    ${indicatorsHtml}
+                </div>
+                <div style="margin-top: 25px;">
+                    <button style="padding: 12px 24px; border-radius: 8px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; margin: 0 8px; background: #95a5a6; color: white;" onclick="dismissMockWarning()">Dismiss</button>
+                    <button style="padding: 12px 24px; border-radius: 8px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; margin: 0 8px; background: #27ae60; color: white;" onclick="trustMockSite()">Trust This Site</button>
+                    <button style="padding: 12px 24px; border-radius: 8px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; margin: 0 8px; background: #ff4444; color: white;" onclick="reportMockSite()">Report</button>
+                </div>
+            `;
+
+            overlay.appendChild(warning);
+            document.body.appendChild(overlay);
+        }
+
+        function dismissMockWarning() {
+            const overlay = document.getElementById('mock-phishing-warning');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        function trustMockSite() {
+            alert('Mock: Site would be added to whitelist');
+            dismissMockWarning();
+        }
+
+        function reportMockSite() {
+            alert('Mock: Site would be reported as phishing');
+            dismissMockWarning();
+        }
+
+        function testContentScript() {
+            alert('To test the actual content script, load the extension and visit a suspicious domain like: paypal-security.com or amazon-login.net');
+        }
+    </script>
+</body>
+</html>

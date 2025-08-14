@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43);
+      color: white;
+      margin: 0;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .status {
+      background: rgba(46, 204, 113, 0.2);
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #2ecc71;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: slideIn 0.3s ease-out;
+      transition: all 0.3s ease;
+    }
+    
+    .warning {
+      background: rgba(231, 76, 60, 0.2);
+      border-left-color: #e74c3c;
+    }
+    
+    .btn {
+      background: #00cec9;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn:hover {
+      background: #00a8a3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .btn-danger {
+      background: #e74c3c;
+    }
+    
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+    
+    .whitelist {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(52, 73, 94, 0.5);
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .whitelist h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #00cec9;
+      font-size: 15px;
+    }
+    
+    .domain-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      font-size: 13px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 4px;
+      margin: 5px 0;
+      transition: all 0.2s ease;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .domain-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>🛡️ Phishing Detector</h3>
+  </div>
+  
+  <div id="status" class="status">
+    <strong>Status:</strong> <span id="statusText">Analyzing...</span>
+  </div>
+  
+  <div>
+    <button id="trustSite" class="btn">✅ Trust This Site</button>
+    <button id="reportSite" class="btn btn-danger">🚨 Report Phishing</button>
+  </div>
+  
+  <div class="whitelist">
+    <h4>Trusted Sites</h4>
+    <div id="whitelistItems"></div>
+    <button id="clearWhitelist" class="btn btn-danger">Clear All</button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
