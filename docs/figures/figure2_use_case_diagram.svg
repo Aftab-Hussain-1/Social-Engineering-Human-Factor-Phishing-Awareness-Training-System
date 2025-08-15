@@ -1,0 +1,123 @@
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .actor { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .usecase { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+      .system-boundary { fill: none; stroke: #333; stroke-width: 2; stroke-dasharray: 5,5; }
+      .actor-line { stroke: #333; stroke-width: 1; }
+      .usecase-oval { fill: #e3f2fd; stroke: #1976d2; stroke-width: 1.5; }
+      .actor-stick { stroke: #333; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" class="title">Figure 2: Use Case Diagram</text>
+  
+  <!-- System Boundary -->
+  <rect x="200" y="80" width="500" height="550" class="system-boundary"/>
+  <text x="450" y="100" class="actor">Phishing Awareness Training System</text>
+  
+  <!-- Actors -->
+  <!-- Employee Actor -->
+  <g transform="translate(80, 200)">
+    <circle cx="0" cy="-10" r="8" fill="none" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="-2" x2="0" y2="20" class="actor-stick"/>
+    <line x1="-10" y1="5" x2="10" y2="5" class="actor-stick"/>
+    <line x1="0" y1="20" x2="-8" y2="35" class="actor-stick"/>
+    <line x1="0" y1="20" x2="8" y2="35" class="actor-stick"/>
+    <text x="0" y="50" class="actor">Employee</text>
+  </g>
+  
+  <!-- Admin Actor -->
+  <g transform="translate(780, 200)">
+    <circle cx="0" cy="-10" r="8" fill="none" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="-2" x2="0" y2="20" class="actor-stick"/>
+    <line x1="-10" y1="5" x2="10" y2="5" class="actor-stick"/>
+    <line x1="0" y1="20" x2="-8" y2="35" class="actor-stick"/>
+    <line x1="0" y1="20" x2="8" y2="35" class="actor-stick"/>
+    <text x="0" y="50" class="actor">Administrator</text>
+  </g>
+  
+  <!-- Chrome Extension Actor -->
+  <g transform="translate(80, 450)">
+    <circle cx="0" cy="-10" r="8" fill="none" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="-2" x2="0" y2="20" class="actor-stick"/>
+    <line x1="-10" y1="5" x2="10" y2="5" class="actor-stick"/>
+    <line x1="0" y1="20" x2="-8" y2="35" class="actor-stick"/>
+    <line x1="0" y1="20" x2="8" y2="35" class="actor-stick"/>
+    <text x="0" y="50" class="actor">Chrome Extension</text>
+  </g>
+  
+  <!-- Use Cases for Employee -->
+  <ellipse cx="300" cy="150" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="155" class="usecase">Register Account</text>
+  
+  <ellipse cx="300" cy="200" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="205" class="usecase">Login</text>
+  
+  <ellipse cx="300" cy="250" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="255" class="usecase">Take Quiz</text>
+  
+  <ellipse cx="300" cy="300" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="305" class="usecase">View Dashboard</text>
+  
+  <ellipse cx="300" cy="350" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="355" class="usecase">Change Password</text>
+  
+  <ellipse cx="300" cy="400" rx="60" ry="25" class="usecase-oval"/>
+  <text x="300" y="405" class="usecase">View Reports</text>
+  
+  <!-- Use Cases for Admin -->
+  <ellipse cx="600" cy="150" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="155" class="usecase">Manage Users</text>
+  
+  <ellipse cx="600" cy="200" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="205" class="usecase">Manage Questions</text>
+  
+  <ellipse cx="600" cy="250" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="255" class="usecase">View Analytics</text>
+  
+  <ellipse cx="600" cy="300" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="305" class="usecase">Generate Reports</text>
+  
+  <ellipse cx="600" cy="350" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="355" class="usecase">Audit System</text>
+  
+  <ellipse cx="600" cy="400" rx="60" ry="25" class="usecase-oval"/>
+  <text x="600" y="405" class="usecase">Reset Passwords</text>
+  
+  <!-- Extension Use Cases -->
+  <ellipse cx="450" cy="450" rx="60" ry="25" class="usecase-oval"/>
+  <text x="450" y="455" class="usecase">Detect Phishing</text>
+  
+  <ellipse cx="450" cy="500" rx="60" ry="25" class="usecase-oval"/>
+  <text x="450" y="505" class="usecase">Report Behavior</text>
+  
+  <ellipse cx="450" cy="550" rx="60" ry="25" class="usecase-oval"/>
+  <text x="450" y="555" class="usecase">Show Warnings</text>
+  
+  <!-- Connections Employee to Use Cases -->
+  <line x1="140" y1="200" x2="240" y2="150" class="actor-line"/>
+  <line x1="140" y1="200" x2="240" y2="200" class="actor-line"/>
+  <line x1="140" y1="200" x2="240" y2="250" class="actor-line"/>
+  <line x1="140" y1="200" x2="240" y2="300" class="actor-line"/>
+  <line x1="140" y1="200" x2="240" y2="350" class="actor-line"/>
+  <line x1="140" y1="200" x2="240" y2="400" class="actor-line"/>
+  
+  <!-- Connections Admin to Use Cases -->
+  <line x1="720" y1="200" x2="660" y2="150" class="actor-line"/>
+  <line x1="720" y1="200" x2="660" y2="200" class="actor-line"/>
+  <line x1="720" y1="200" x2="660" y2="250" class="actor-line"/>
+  <line x1="720" y1="200" x2="660" y2="300" class="actor-line"/>
+  <line x1="720" y1="200" x2="660" y2="350" class="actor-line"/>
+  <line x1="720" y1="200" x2="660" y2="400" class="actor-line"/>
+  
+  <!-- Connections Extension to Use Cases -->
+  <line x1="140" y1="450" x2="390" y2="450" class="actor-line"/>
+  <line x1="140" y1="450" x2="390" y2="500" class="actor-line"/>
+  <line x1="140" y1="450" x2="390" y2="550" class="actor-line"/>
+  
+  <!-- Extension to Employee connection -->
+  <line x1="140" y1="450" x2="240" y2="400" class="actor-line" stroke-dasharray="3,3"/>
+</svg>

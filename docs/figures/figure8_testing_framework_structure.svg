@@ -1,0 +1,190 @@
+<svg width="900" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .category-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .test-title { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; text-anchor: middle; }
+      .test-desc { font-family: Arial, sans-serif; font-size: 9px; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 8px; text-anchor: middle; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .unit-test { fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5; }
+      .integration-test { fill: #fff3e0; stroke: #ff9800; stroke-width: 2; rx: 5; }
+      .system-test { fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; rx: 5; }
+      .user-test { fill: #e3f2fd; stroke: #2196f3; stroke-width: 2; rx: 5; }
+      .security-test { fill: #ffebee; stroke: #f44336; stroke-width: 2; rx: 5; }
+      .performance-test { fill: #fce4ec; stroke: #e91e63; stroke-width: 2; rx: 5; }
+      .framework { fill: #f5f5f5; stroke: #757575; stroke-width: 2; rx: 10; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" class="title">Figure 8: Testing Framework Structure</text>
+  
+  <!-- Testing Pyramid Structure -->
+  <text x="450" y="60" class="category-title">Testing Pyramid</text>
+  
+  <!-- Unit Tests (Bottom Layer) -->
+  <rect x="200" y="80" width="500" height="80" class="unit-test"/>
+  <text x="450" y="105" class="category-title">Unit Tests (Foundation Layer)</text>
+  
+  <!-- Unit Test Components -->
+  <rect x="220" y="120" width="100" height="30" class="unit-test"/>
+  <text x="270" y="135" class="test-title">Flask Routes</text>
+  <text x="270" y="145" class="test-desc">API Endpoints</text>
+  
+  <rect x="340" y="120" width="100" height="30" class="unit-test"/>
+  <text x="390" y="135" class="test-title">Database Models</text>
+  <text x="390" y="145" class="test-desc">CRUD Operations</text>
+  
+  <rect x="460" y="120" width="100" height="30" class="unit-test"/>
+  <text x="510" y="135" class="test-title">Phishing Detection</text>
+  <text x="510" y="145" class="test-desc">Algorithm Logic</text>
+  
+  <rect x="580" y="120" width="100" height="30" class="unit-test"/>
+  <text x="630" y="135" class="test-title">Utility Functions</text>
+  <text x="630" y="145" class="test-desc">Helper Methods</text>
+  
+  <!-- Integration Tests (Middle Layer) -->
+  <rect x="250" y="180" width="400" height="80" class="integration-test"/>
+  <text x="450" y="205" class="category-title">Integration Tests (Component Layer)</text>
+  
+  <rect x="270" y="220" width="120" height="30" class="integration-test"/>
+  <text x="330" y="235" class="test-title">Extension-Server</text>
+  <text x="330" y="245" class="test-desc">API Communication</text>
+  
+  <rect x="410" y="220" width="120" height="30" class="integration-test"/>
+  <text x="470" y="235" class="test-title">Database Integration</text>
+  <text x="470" y="245" class="test-desc">Data Persistence</text>
+  
+  <rect x="550" y="220" width="80" height="30" class="integration-test"/>
+  <text x="590" y="235" class="test-title">Auth Flow</text>
+  <text x="590" y="245" class="test-desc">Login/Session</text>
+  
+  <!-- System Tests (Top Layer) -->
+  <rect x="300" y="280" width="300" height="60" class="system-test"/>
+  <text x="450" y="305" class="category-title">System Tests (End-to-End)</text>
+  
+  <rect x="320" y="320" width="100" height="30" class="system-test"/>
+  <text x="370" y="335" class="test-title">Full Workflow</text>
+  <text x="370" y="345" class="test-desc">Complete Scenarios</text>
+  
+  <rect x="440" y="320" width="100" height="30" class="system-test"/>
+  <text x="490" y="335" class="test-title">Cross-Browser</text>
+  <text x="490" y="345" class="test-desc">Compatibility</text>
+  
+  <!-- Specialized Testing Categories -->
+  
+  <!-- User Acceptance Testing -->
+  <rect x="50" y="400" width="180" height="120" class="user-test"/>
+  <text x="140" y="425" class="category-title">User Acceptance Testing</text>
+  
+  <rect x="70" y="450" width="140" height="25" class="user-test"/>
+  <text x="140" y="465" class="test-title">Usability Testing</text>
+  
+  <rect x="70" y="485" width="140" height="25" class="user-test"/>
+  <text x="140" y="500" class="test-title">User Experience</text>
+  
+  <!-- Security Testing -->
+  <rect x="260" y="400" width="180" height="120" class="security-test"/>
+  <text x="350" y="425" class="category-title">Security Testing</text>
+  
+  <rect x="280" y="445" width="140" height="20" class="security-test"/>
+  <text x="350" y="458" class="test-title">SQL Injection</text>
+  
+  <rect x="280" y="470" width="140" height="20" class="security-test"/>
+  <text x="350" y="483" class="test-title">XSS Prevention</text>
+  
+  <rect x="280" y="495" width="140" height="20" class="security-test"/>
+  <text x="350" y="508" class="test-title">CSRF Protection</text>
+  
+  <!-- Performance Testing -->
+  <rect x="470" y="400" width="180" height="120" class="performance-test"/>
+  <text x="560" y="425" class="category-title">Performance Testing</text>
+  
+  <rect x="490" y="445" width="140" height="20" class="performance-test"/>
+  <text x="560" y="458" class="test-title">Load Testing</text>
+  
+  <rect x="490" y="470" width="140" height="20" class="performance-test"/>
+  <text x="560" y="483" class="test-title">Response Time</text>
+  
+  <rect x="490" y="495" width="140" height="20" class="performance-test"/>
+  <text x="560" y="508" class="test-title">Scalability</text>
+  
+  <!-- Extension-Specific Testing -->
+  <rect x="680" y="400" width="180" height="120" class="integration-test"/>
+  <text x="770" y="425" class="category-title">Extension Testing</text>
+  
+  <rect x="700" y="445" width="140" height="20" class="integration-test"/>
+  <text x="770" y="458" class="test-title">Content Script</text>
+  
+  <rect x="700" y="470" width="140" height="20" class="integration-test"/>
+  <text x="770" y="483" class="test-title">Background Script</text>
+  
+  <rect x="700" y="495" width="140" height="20" class="integration-test"/>
+  <text x="770" y="508" class="test-title">Popup Interface</text>
+  
+  <!-- Testing Tools and Frameworks -->
+  <rect x="100" y="560" width="700" height="100" class="framework"/>
+  <text x="450" y="585" class="category-title">Testing Tools & Frameworks</text>
+  
+  <!-- Tool Categories -->
+  <rect x="120" y="600" width="100" height="50" class="unit-test"/>
+  <text x="170" y="620" class="test-title">Unit Testing</text>
+  <text x="170" y="635" class="test-desc">• pytest</text>
+  <text x="170" y="645" class="test-desc">• unittest</text>
+  
+  <rect x="240" y="600" width="100" height="50" class="integration-test"/>
+  <text x="290" y="620" class="test-title">Integration</text>
+  <text x="290" y="635" class="test-desc">• Flask-Testing</text>
+  <text x="290" y="645" class="test-desc">• Postman</text>
+  
+  <rect x="360" y="600" width="100" height="50" class="system-test"/>
+  <text x="410" y="620" class="test-title">E2E Testing</text>
+  <text x="410" y="635" class="test-desc">• Selenium</text>
+  <text x="410" y="645" class="test-desc">• Cypress</text>
+  
+  <rect x="480" y="600" width="100" height="50" class="security-test"/>
+  <text x="530" y="620" class="test-title">Security</text>
+  <text x="530" y="635" class="test-desc">• OWASP ZAP</text>
+  <text x="530" y="645" class="test-desc">• Bandit</text>
+  
+  <rect x="600" y="600" width="100" height="50" class="performance-test"/>
+  <text x="650" y="620" class="test-title">Performance</text>
+  <text x="650" y="635" class="test-desc">• Locust</text>
+  <text x="650" y="645" class="test-desc">• JMeter</text>
+  
+  <rect x="720" y="600" width="60" height="50" class="user-test"/>
+  <text x="750" y="620" class="test-title">Manual</text>
+  <text x="750" y="635" class="test-desc">• User</text>
+  <text x="750" y="645" class="test-desc">• Testing</text>
+  
+  <!-- Test Coverage and Metrics -->
+  <text x="450" y="690" class="category-title">Test Coverage & Metrics</text>
+  
+  <text x="150" y="710" class="test-desc">• Code Coverage: >90% for critical components</text>
+  <text x="150" y="725" class="test-desc">• Phishing Detection Accuracy: >95%</text>
+  <text x="150" y="740" class="test-desc">• Response Time: <200ms for API calls</text>
+  <text x="150" y="755" class="test-desc">• Browser Compatibility: Chrome, Firefox, Edge</text>
+  <text x="150" y="770" class="test-desc">• Security Scan: Zero high-severity vulnerabilities</text>
+  
+  <!-- Arrows showing test flow -->
+  <line x1="450" y1="160" x2="450" y2="180" class="arrow"/>
+  <line x1="450" y1="260" x2="450" y2="280" class="arrow"/>
+  <line x1="450" y1="340" x2="450" y2="400" class="arrow" stroke-dasharray="5,5"/>
+  
+  <!-- Feedback arrows -->
+  <line x1="140" y1="520" x2="200" y2="400" class="arrow" stroke="#2196f3" stroke-dasharray="3,3"/>
+  <text x="120" y="460" class="label">Feedback</text>
+  
+  <line x1="350" y1="520" x2="400" y2="400" class="arrow" stroke="#f44336" stroke-dasharray="3,3"/>
+  <text x="330" y="460" class="label">Security</text>
+  
+  <line x1="560" y1="520" x2="500" y2="400" class="arrow" stroke="#e91e63" stroke-dasharray="3,3"/>
+  <text x="540" y="460" class="label">Performance</text>
+  
+  <line x1="770" y1="520" x2="600" y2="400" class="arrow" stroke="#ff9800" stroke-dasharray="3,3"/>
+  <text x="750" y="460" class="label">Extension</text>
+</svg>

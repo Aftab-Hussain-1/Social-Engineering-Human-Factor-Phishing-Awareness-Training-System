@@ -1,0 +1,161 @@
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .step-title { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; text-anchor: middle; }
+      .step-desc { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 9px; text-anchor: middle; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .decision-arrow { stroke: #ff6b35; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .start-end { fill: #4caf50; stroke: #2e7d32; stroke-width: 2; rx: 20; }
+      .process { fill: #2196f3; stroke: #1565c0; stroke-width: 2; rx: 5; }
+      .decision { fill: #ff9800; stroke: #e65100; stroke-width: 2; }
+      .warning { fill: #f44336; stroke: #c62828; stroke-width: 2; rx: 5; }
+      .training { fill: #9c27b0; stroke: #6a1b9a; stroke-width: 2; rx: 5; }
+      .report { fill: #607d8b; stroke: #37474f; stroke-width: 2; rx: 5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" class="title">Figure 5: User Interface Workflow</text>
+  
+  <!-- Start -->
+  <ellipse cx="450" cy="70" rx="60" ry="25" class="start-end"/>
+  <text x="450" y="75" class="step-title" fill="white">Start</text>
+  
+  <!-- User Registration/Login -->
+  <rect x="375" y="120" width="150" height="50" class="process"/>
+  <text x="450" y="140" class="step-title" fill="white">User Login/Register</text>
+  <text x="450" y="155" class="step-desc" fill="white">Authentication</text>
+  
+  <!-- Dashboard -->
+  <rect x="375" y="200" width="150" height="50" class="process"/>
+  <text x="450" y="220" class="step-title" fill="white">Dashboard</text>
+  <text x="450" y="235" class="step-desc" fill="white">Main Interface</text>
+  
+  <!-- User Activity Decision -->
+  <polygon points="450,280 500,310 450,340 400,310" class="decision"/>
+  <text x="450" y="310" class="step-title">User Activity</text>
+  <text x="450" y="325" class="step-desc">Choice</text>
+  
+  <!-- Browse Web (Left Path) -->
+  <rect x="150" y="380" width="120" height="50" class="process"/>
+  <text x="210" y="400" class="step-title" fill="white">Browse Web</text>
+  <text x="210" y="415" class="step-desc" fill="white">Normal Browsing</text>
+  
+  <!-- Extension Monitoring -->
+  <rect x="150" y="460" width="120" height="50" class="process"/>
+  <text x="210" y="480" class="step-title" fill="white">Extension Monitor</text>
+  <text x="210" y="495" class="step-desc" fill="white">URL Analysis</text>
+  
+  <!-- Phishing Detection Decision -->
+  <polygon points="210,540 260,570 210,600 160,570" class="decision"/>
+  <text x="210" y="570" class="step-title">Phishing</text>
+  <text x="210" y="585" class="step-desc">Detected?</text>
+  
+  <!-- Warning Display -->
+  <rect x="50" y="630" width="120" height="50" class="warning"/>
+  <text x="110" y="650" class="step-title" fill="white">Show Warning</text>
+  <text x="110" y="665" class="step-desc" fill="white">Alert User</text>
+  
+  <!-- Training Module (Center Path) -->
+  <rect x="390" y="380" width="120" height="50" class="training"/>
+  <text x="450" y="400" class="step-title" fill="white">Training Module</text>
+  <text x="450" y="415" class="step-desc" fill="white">Educational Content</text>
+  
+  <!-- Quiz/Assessment -->
+  <rect x="390" y="460" width="120" height="50" class="training"/>
+  <text x="450" y="480" class="step-title" fill="white">Take Quiz</text>
+  <text x="450" y="495" class="step-desc" fill="white">Knowledge Test</text>
+  
+  <!-- Progress Tracking -->
+  <rect x="390" y="540" width="120" height="50" class="training"/>
+  <text x="450" y="560" class="step-title" fill="white">Track Progress</text>
+  <text x="450" y="575" class="step-desc" fill="white">Learning Analytics</text>
+  
+  <!-- View Reports (Right Path) -->
+  <rect x="630" y="380" width="120" height="50" class="report"/>
+  <text x="690" y="400" class="step-title" fill="white">View Reports</text>
+  <text x="690" y="415" class="step-desc" fill="white">Analytics Dashboard</text>
+  
+  <!-- Generate Report -->
+  <rect x="630" y="460" width="120" height="50" class="report"/>
+  <text x="690" y="480" class="step-title" fill="white">Generate Report</text>
+  <text x="690" y="495" class="step-desc" fill="white">Custom Analysis</text>
+  
+  <!-- Export Data -->
+  <rect x="630" y="540" width="120" height="50" class="report"/>
+  <text x="690" y="560" class="step-title" fill="white">Export Data</text>
+  <text x="690" y="575" class="step-desc" fill="white">PDF/CSV Export</text>
+  
+  <!-- Admin Panel (Far Right) -->
+  <rect x="780" y="380" width="100" height="50" class="process"/>
+  <text x="830" y="400" class="step-title" fill="white">Admin Panel</text>
+  <text x="830" y="415" class="step-desc" fill="white">Management</text>
+  
+  <!-- User Management -->
+  <rect x="780" y="460" width="100" height="50" class="process"/>
+  <text x="830" y="480" class="step-title" fill="white">User Mgmt</text>
+  <text x="830" y="495" class="step-desc" fill="white">Admin Tasks</text>
+  
+  <!-- End -->
+  <ellipse cx="450" cy="650" rx="60" ry="25" class="start-end"/>
+  <text x="450" y="655" class="step-title" fill="white">End Session</text>
+  
+  <!-- Arrows -->
+  <!-- Main flow -->
+  <line x1="450" y1="95" x2="450" y2="120" class="arrow"/>
+  <line x1="450" y1="170" x2="450" y2="200" class="arrow"/>
+  <line x1="450" y1="250" x2="450" y2="280" class="arrow"/>
+  
+  <!-- Decision branches -->
+  <line x1="400" y1="310" x2="270" y2="380" class="decision-arrow"/>
+  <text x="320" y="340" class="label">Browse</text>
+  
+  <line x1="450" y1="340" x2="450" y2="380" class="decision-arrow"/>
+  <text x="470" y="360" class="label">Train</text>
+  
+  <line x1="500" y1="310" x2="630" y2="380" class="decision-arrow"/>
+  <text x="580" y="340" class="label">Reports</text>
+  
+  <line x1="520" y1="300" x2="780" y2="380" class="decision-arrow"/>
+  <text x="650" y="320" class="label">Admin</text>
+  
+  <!-- Left path flow -->
+  <line x1="210" y1="430" x2="210" y2="460" class="arrow"/>
+  <line x1="210" y1="510" x2="210" y2="540" class="arrow"/>
+  <line x1="160" y1="570" x2="110" y2="630" class="decision-arrow"/>
+  <text x="120" y="600" class="label">Yes</text>
+  
+  <!-- Center path flow -->
+  <line x1="450" y1="430" x2="450" y2="460" class="arrow"/>
+  <line x1="450" y1="510" x2="450" y2="540" class="arrow"/>
+  
+  <!-- Right path flow -->
+  <line x1="690" y1="430" x2="690" y2="460" class="arrow"/>
+  <line x1="690" y1="510" x2="690" y2="540" class="arrow"/>
+  
+  <!-- Admin path flow -->
+  <line x1="830" y1="430" x2="830" y2="460" class="arrow"/>
+  
+  <!-- Return to dashboard arrows -->
+  <line x1="260" y1="570" x2="450" y2="250" class="arrow" stroke-dasharray="5,5"/>
+  <text x="350" y="400" class="label">No - Continue</text>
+  
+  <line x1="110" y1="630" x2="450" y2="625" class="arrow"/>
+  <line x1="450" y1="590" x2="450" y2="625" class="arrow"/>
+  <line x1="690" y1="590" x2="450" y2="625" class="arrow"/>
+  <line x1="830" y1="510" x2="450" y2="625" class="arrow"/>
+  
+  <!-- Legend -->
+  <text x="50" y="50" class="step-title">Legend:</text>
+  <rect x="50" y="60" width="20" height="15" class="process"/>
+  <text x="80" y="72" class="label">Process</text>
+  <polygon points="150,60 170,67.5 150,75 130,67.5" class="decision"/>
+  <text x="180" y="72" class="label">Decision</text>
+  <rect x="230" y="60" width="20" height="15" class="warning"/>
+  <text x="260" y="72" class="label">Warning</text>
+</svg>

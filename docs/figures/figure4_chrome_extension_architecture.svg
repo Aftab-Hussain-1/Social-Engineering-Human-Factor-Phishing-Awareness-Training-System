@@ -1,0 +1,112 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .component { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; font-weight: bold; }
+      .label { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+      .description { font-family: Arial, sans-serif; font-size: 9px; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .bidirectional { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); marker-start: url(#arrowhead); }
+      .content-script { fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5; }
+      .background { fill: #fff3e0; stroke: #ff9800; stroke-width: 2; rx: 5; }
+      .popup { fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; rx: 5; }
+      .web-page { fill: #e3f2fd; stroke: #2196f3; stroke-width: 2; rx: 5; }
+      .server { fill: #ffebee; stroke: #f44336; stroke-width: 2; rx: 5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="title">Figure 4: Chrome Extension Architecture</text>
+  
+  <!-- Web Page Layer -->
+  <rect x="50" y="80" width="200" height="100" class="web-page"/>
+  <text x="150" y="105" class="component">Web Page</text>
+  <text x="60" y="125" class="description">• DOM Elements</text>
+  <text x="60" y="140" class="description">• User Interactions</text>
+  <text x="60" y="155" class="description">• URL Navigation</text>
+  <text x="60" y="170" class="description">• Form Submissions</text>
+  
+  <!-- Content Script -->
+  <rect x="300" y="80" width="200" height="120" class="content-script"/>
+  <text x="400" y="105" class="component">Content Script</text>
+  <text x="400" y="120" class="label">(content.js)</text>
+  <text x="310" y="140" class="description">• URL Monitoring</text>
+  <text x="310" y="155" class="description">• Phishing Detection</text>
+  <text x="310" y="170" class="description">• Warning Injection</text>
+  <text x="310" y="185" class="description">• Behavior Tracking</text>
+  
+  <!-- Background Script -->
+  <rect x="550" y="80" width="200" height="120" class="background"/>
+  <text x="650" y="105" class="component">Background Script</text>
+  <text x="650" y="120" class="label">(background.js)</text>
+  <text x="560" y="140" class="description">• Message Routing</text>
+  <text x="560" y="155" class="description">• API Communication</text>
+  <text x="560" y="170" class="description">• Data Storage</text>
+  <text x="560" y="185" class="description">• Event Handling</text>
+  
+  <!-- Popup Interface -->
+  <rect x="300" y="250" width="200" height="100" class="popup"/>
+  <text x="400" y="275" class="component">Popup Interface</text>
+  <text x="400" y="290" class="label">(popup.html/js)</text>
+  <text x="310" y="310" class="description">• User Settings</text>
+  <text x="310" y="325" class="description">• Statistics Display</text>
+  <text x="310" y="340" class="description">• Manual Reporting</text>
+  
+  <!-- Phishing Database -->
+  <rect x="50" y="400" width="200" height="100" class="background"/>
+  <text x="150" y="425" class="component">Phishing Database</text>
+  <text x="150" y="440" class="label">(phishing_urls.json)</text>
+  <text x="60" y="460" class="description">• Known Phishing URLs</text>
+  <text x="60" y="475" class="description">• Threat Categories</text>
+  <text x="60" y="490" class="description">• Risk Levels</text>
+  
+  <!-- Flask Server -->
+  <rect x="550" y="400" width="200" height="120" class="server"/>
+  <text x="650" y="425" class="component">Flask Server</text>
+  <text x="650" y="440" class="label">(Web Application)</text>
+  <text x="560" y="460" class="description">• Behavior Logging</text>
+  <text x="560" y="475" class="description">• Risk Analysis</text>
+  <text x="560" y="490" class="description">• Report Generation</text>
+  <text x="560" y="505" class="description">• User Management</text>
+  
+  <!-- Chrome Extension Manifest -->
+  <rect x="300" y="400" width="200" height="80" class="popup"/>
+  <text x="400" y="425" class="component">Manifest.json</text>
+  <text x="310" y="445" class="description">• Permissions</text>
+  <text x="310" y="460" class="description">• Script Declarations</text>
+  <text x="310" y="475" class="description">• Extension Metadata</text>
+  
+  <!-- Arrows and Connections -->
+  <!-- Web Page to Content Script -->
+  <line x1="250" y1="130" x2="300" y2="130" class="bidirectional"/>
+  <text x="275" y="125" class="label">DOM Access</text>
+  
+  <!-- Content Script to Background -->
+  <line x1="500" y1="140" x2="550" y2="140" class="bidirectional"/>
+  <text x="525" y="135" class="label">Messages</text>
+  
+  <!-- Background to Popup -->
+  <line x1="600" y1="200" x2="450" y2="250" class="bidirectional"/>
+  <text x="525" y="220" class="label">Data</text>
+  
+  <!-- Content Script to Phishing DB -->
+  <line x1="300" y1="180" x2="200" y2="400" class="arrow"/>
+  <text x="220" y="290" class="label">URL Check</text>
+  
+  <!-- Background to Flask Server -->
+  <line x1="650" y1="200" x2="650" y2="400" class="bidirectional"/>
+  <text x="670" y="300" class="label">HTTP API</text>
+  
+  <!-- Manifest connections -->
+  <line x1="400" y1="350" x2="400" y2="400" class="arrow"/>
+  <text x="420" y="375" class="label">Config</text>
+  
+  <!-- Data Flow Labels -->
+  <text x="400" y="550" class="component">Data Flow:</text>
+  <text x="50" y="570" class="description">1. User navigates to webpage → Content script monitors URL</text>
+  <text x="50" y="585" class="description">2. Content script checks URL against phishing database</text>
+  <text x="50" y="600" class="description">3. If suspicious, warning displayed and behavior logged via background script</text>
+</svg>

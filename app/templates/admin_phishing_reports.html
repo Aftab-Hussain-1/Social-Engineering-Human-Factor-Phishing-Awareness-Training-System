@@ -410,7 +410,7 @@
             <a href="{{ url_for('main.update_report_status', id=report.id, status='false_positive') }}" 
                class="action-btn btn-false">✗ False Positive</a>
           {% endif %}
-          <button onclick="showDetails({{ report.id }})" class="action-btn btn-details">👁️ View Details</button>
+          <button onclick="showDetails('{{ report.id }}')" class="action-btn btn-details">👁️ View Details</button>
         </div>
       </div>
       {% endfor %}

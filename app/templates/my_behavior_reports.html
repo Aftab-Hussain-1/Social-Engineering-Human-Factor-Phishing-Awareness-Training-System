@@ -2,6 +2,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+.rating-excellent {
+    background: #d4edda;
+    color: #155724;
+}
+.rating-good {
+    background: #cce7ff;
+    color: #004085;
+}
+.rating-fair {
+    background: #fff3cd;
+    color: #856404;
+}
+.rating-poor {
+    background: #f8d7da;
+    color: #721c24;
+}
+</style>
 <div style="max-width: 1200px; margin: 0 auto; padding: 28px;">
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 36px; border-radius: 15px; margin-bottom: 36px; box-shadow: 0 6px 18px rgba(0,0,0,0.15);">
         <h1 style="margin: 0; font-size: 2.4em; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">📊 My Behavior Reports</h1>
@@ -27,11 +45,8 @@
                             <td style="padding: 22px; color: #37474F; font-size: 1.05em;">{{ report.created_at.strftime('%m/%d/%Y') }}</td>
                             <td style="padding: 22px; font-weight: bold; color: #5367d8; font-size: 1.05em; letter-spacing: 0.3px;">{{ "%.1f"|format(report.quiz_result.score) }}%</td>
                             <td style="padding: 22px;">
-                                <span style="padding: 8px 16px; border-radius: 15px; font-size: 0.95em; font-weight: bold; letter-spacing: 0.3px;
-                                    {% if report.overall_rating == 'Excellent' %}background: #d4edda; color: #155724;
-                                    {% elif report.overall_rating == 'Good' %}background: #cce7ff; color: #004085;
-                                    {% elif report.overall_rating == 'Fair' %}background: #fff3cd; color: #856404;
-                                    {% else %}background: #f8d7da; color: #721c24;{% endif %}">
+                                <span style="padding: 8px 16px; border-radius: 15px; font-size: 0.95em; font-weight: bold; letter-spacing: 0.3px;" 
+                                      class="{% if report.overall_rating == 'Excellent' %}rating-excellent{% elif report.overall_rating == 'Good' %}rating-good{% elif report.overall_rating == 'Fair' %}rating-fair{% else %}rating-poor{% endif %}">
                                     {{ report.overall_rating }}
                                 </span>
                             </td>

@@ -1,0 +1,170 @@
+<svg width="800" height="900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .step-title { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; text-anchor: middle; }
+      .step-desc { font-family: Arial, sans-serif; font-size: 9px; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 8px; text-anchor: middle; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .decision-arrow { stroke: #ff6b35; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .start-end { fill: #4caf50; stroke: #2e7d32; stroke-width: 2; rx: 20; }
+      .process { fill: #2196f3; stroke: #1565c0; stroke-width: 2; rx: 5; }
+      .decision { fill: #ff9800; stroke: #e65100; stroke-width: 2; }
+      .analysis { fill: #9c27b0; stroke: #6a1b9a; stroke-width: 2; rx: 5; }
+      .warning { fill: #f44336; stroke: #c62828; stroke-width: 2; rx: 5; }
+      .safe { fill: #4caf50; stroke: #2e7d32; stroke-width: 2; rx: 5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="title">Figure 6: Phishing Detection Process Flow</text>
+  
+  <!-- Start -->
+  <ellipse cx="400" cy="70" rx="60" ry="25" class="start-end"/>
+  <text x="400" y="75" class="step-title" fill="white">URL Detected</text>
+  
+  <!-- URL Extraction -->
+  <rect x="325" y="120" width="150" height="40" class="process"/>
+  <text x="400" y="135" class="step-title" fill="white">Extract URL Components</text>
+  <text x="400" y="150" class="step-desc" fill="white">Domain, Path, Parameters</text>
+  
+  <!-- Whitelist Check -->
+  <polygon points="400,190 450,220 400,250 350,220" class="decision"/>
+  <text x="400" y="215" class="step-title">Whitelist</text>
+  <text x="400" y="230" class="step-desc">Check</text>
+  
+  <!-- Safe (Whitelist) -->
+  <rect x="550" y="200" width="120" height="40" class="safe"/>
+  <text x="610" y="215" class="step-title" fill="white">Mark as Safe</text>
+  <text x="610" y="230" class="step-desc" fill="white">Trusted Domain</text>
+  
+  <!-- Blacklist Check -->
+  <polygon points="400,280 450,310 400,340 350,310" class="decision"/>
+  <text x="400" y="305" class="step-title">Blacklist</text>
+  <text x="400" y="320" class="step-desc">Check</text>
+  
+  <!-- Phishing Detected (Blacklist) -->
+  <rect x="550" y="290" width="120" height="40" class="warning"/>
+  <text x="610" y="305" class="step-title" fill="white">Phishing Detected</text>
+  <text x="610" y="320" class="step-desc" fill="white">Known Threat</text>
+  
+  <!-- URL Analysis -->
+  <rect x="325" y="370" width="150" height="40" class="analysis"/>
+  <text x="400" y="385" class="step-title" fill="white">URL Pattern Analysis</text>
+  <text x="400" y="400" class="step-desc" fill="white">Suspicious Patterns</text>
+  
+  <!-- Domain Analysis -->
+  <rect x="325" y="440" width="150" height="40" class="analysis"/>
+  <text x="400" y="455" class="step-title" fill="white">Domain Analysis</text>
+  <text x="400" y="470" class="step-desc" fill="white">Typosquatting, Age, SSL</text>
+  
+  <!-- Content Analysis -->
+  <rect x="325" y="510" width="150" height="40" class="analysis"/>
+  <text x="400" y="525" class="step-title" fill="white">Content Analysis</text>
+  <text x="400" y="540" class="step-desc" fill="white">Keywords, Forms, Links</text>
+  
+  <!-- Risk Score Calculation -->
+  <rect x="325" y="580" width="150" height="40" class="process"/>
+  <text x="400" y="595" class="step-title" fill="white">Calculate Risk Score</text>
+  <text x="400" y="610" class="step-desc" fill="white">Weighted Algorithm</text>
+  
+  <!-- Risk Level Decision -->
+  <polygon points="400,650 450,680 400,710 350,680" class="decision"/>
+  <text x="400" y="675" class="step-title">Risk Level</text>
+  <text x="400" y="690" class="step-desc">Assessment</text>
+  
+  <!-- Low Risk -->
+  <rect x="150" y="750" width="100" height="40" class="safe"/>
+  <text x="200" y="765" class="step-title" fill="white">Low Risk</text>
+  <text x="200" y="780" class="step-desc" fill="white">Allow Access</text>
+  
+  <!-- Medium Risk -->
+  <rect x="300" y="750" width="100" height="40" class="analysis"/>
+  <text x="350" y="765" class="step-title" fill="white">Medium Risk</text>
+  <text x="350" y="780" class="step-desc" fill="white">Show Caution</text>
+  
+  <!-- High Risk -->
+  <rect x="450" y="750" width="100" height="40" class="warning"/>
+  <text x="500" y="765" class="step-title" fill="white">High Risk</text>
+  <text x="500" y="780" class="step-desc" fill="white">Block & Warn</text>
+  
+  <!-- Log Behavior -->
+  <rect x="325" y="820" width="150" height="40" class="process"/>
+  <text x="400" y="835" class="step-title" fill="white">Log User Behavior</text>
+  <text x="400" y="850" class="step-desc" fill="white">Analytics & Training</text>
+  
+  <!-- Analysis Details (Left Side) -->
+  <text x="50" y="380" class="step-title">URL Pattern Checks:</text>
+  <text x="50" y="395" class="step-desc">• Suspicious TLDs</text>
+  <text x="50" y="405" class="step-desc">• URL Shorteners</text>
+  <text x="50" y="415" class="step-desc">• IP Addresses</text>
+  <text x="50" y="425" class="step-desc">• Excessive Subdomains</text>
+  
+  <text x="50" y="450" class="step-title">Domain Checks:</text>
+  <text x="50" y="465" class="step-desc">• Domain Age < 30 days</text>
+  <text x="50" y="475" class="step-desc">• Missing SSL Certificate</text>
+  <text x="50" y="485" class="step-desc">• Typosquatting Detection</text>
+  <text x="50" y="495" class="step-desc">• WHOIS Information</text>
+  
+  <text x="50" y="520" class="step-title">Content Checks:</text>
+  <text x="50" y="535" class="step-desc">• Phishing Keywords</text>
+  <text x="50" y="545" class="step-desc">• Suspicious Forms</text>
+  <text x="50" y="555" class="step-desc">• External Redirects</text>
+  <text x="50" y="565" class="step-desc">• Brand Impersonation</text>
+  
+  <!-- Risk Scoring (Right Side) -->
+  <text x="650" y="580" class="step-title">Risk Scoring:</text>
+  <text x="650" y="595" class="step-desc">• URL Pattern: 0-30 points</text>
+  <text x="650" y="605" class="step-desc">• Domain Trust: 0-25 points</text>
+  <text x="650" y="615" class="step-desc">• Content Analysis: 0-25 points</text>
+  <text x="650" y="625" class="step-desc">• SSL/Security: 0-20 points</text>
+  
+  <text x="650" y="650" class="step-title">Risk Levels:</text>
+  <text x="650" y="665" class="step-desc">• Low: 0-30 points</text>
+  <text x="650" y="675" class="step-desc">• Medium: 31-60 points</text>
+  <text x="650" y="685" class="step-desc">• High: 61-100 points</text>
+  
+  <!-- Arrows -->
+  <line x1="400" y1="95" x2="400" y2="120" class="arrow"/>
+  <line x1="400" y1="160" x2="400" y2="190" class="arrow"/>
+  
+  <!-- Whitelist decision -->
+  <line x1="450" y1="220" x2="550" y2="220" class="decision-arrow"/>
+  <text x="500" y="215" class="label">Yes</text>
+  
+  <line x1="400" y1="250" x2="400" y2="280" class="decision-arrow"/>
+  <text x="420" y="265" class="label">No</text>
+  
+  <!-- Blacklist decision -->
+  <line x1="450" y1="310" x2="550" y2="310" class="decision-arrow"/>
+  <text x="500" y="305" class="label">Yes</text>
+  
+  <line x1="400" y1="340" x2="400" y2="370" class="decision-arrow"/>
+  <text x="420" y="355" class="label">No</text>
+  
+  <!-- Analysis flow -->
+  <line x1="400" y1="410" x2="400" y2="440" class="arrow"/>
+  <line x1="400" y1="480" x2="400" y2="510" class="arrow"/>
+  <line x1="400" y1="550" x2="400" y2="580" class="arrow"/>
+  <line x1="400" y1="620" x2="400" y2="650" class="arrow"/>
+  
+  <!-- Risk level decisions -->
+  <line x1="350" y1="680" x2="200" y2="750" class="decision-arrow"/>
+  <text x="260" y="710" class="label">Low</text>
+  
+  <line x1="400" y1="710" x2="350" y2="750" class="decision-arrow"/>
+  <text x="375" y="730" class="label">Medium</text>
+  
+  <line x1="450" y1="680" x2="500" y2="750" class="decision-arrow"/>
+  <text x="475" y="710" class="label">High</text>
+  
+  <!-- All paths to logging -->
+  <line x1="200" y1="790" x2="400" y2="820" class="arrow"/>
+  <line x1="350" y1="790" x2="400" y2="820" class="arrow"/>
+  <line x1="500" y1="790" x2="400" y2="820" class="arrow"/>
+  <line x1="610" y1="240" x2="400" y2="820" class="arrow" stroke-dasharray="3,3"/>
+  <line x1="610" y1="330" x2="400" y2="820" class="arrow" stroke-dasharray="3,3"/>
+</svg>

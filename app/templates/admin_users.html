@@ -164,6 +164,24 @@
   .action-btn.demote:hover {
     background-color: #e67e22;
   }
+
+  .action-btn.deactivate {
+    background-color: #e74c3c;
+    color: white;
+  }
+
+  .action-btn.deactivate:hover {
+    background-color: #c0392b;
+  }
+
+  .action-btn.activate {
+    background-color: #27ae60;
+    color: white;
+  }
+
+  .action-btn.activate:hover {
+    background-color: #229954;
+  }
 </style>
 
 <h2>👥 Admin: Manage Users</h2>
@@ -205,14 +223,14 @@
         {% else %}
           <div style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
             {% if not u.is_admin %}
-              <a href="{{ url_for('main.promote_user', user_id=u.id) }}" style="background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 12px;">✅ Promote</a>
+              <a href="{{ url_for('main.promote_user', user_id=u.id) }}" class="action-btn promote">✅ Promote</a>
             {% else %}
-              <a href="{{ url_for('main.demote_user', user_id=u.id) }}" style="background: #f39c12; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 12px;">⬇️ Demote</a>
+              <a href="{{ url_for('main.demote_user', user_id=u.id) }}" class="action-btn demote">⬇️ Demote</a>
             {% endif %}
-            <a href="{{ url_for('main.toggle_user', user_id=u.id) }}" style="background: {{ '#e74c3c' if u.is_active else '#27ae60' }}; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 12px;">
+            <a href="{{ url_for('main.toggle_user', user_id=u.id) }}" class="action-btn {{ 'deactivate' if u.is_active else 'activate' }}">
               {{ '❌ Deactivate' if u.is_active else '✅ Activate' }}
             </a>
-            <a href="{{ url_for('main.reset_password', user_id=u.id) }}" style="background: #3498db; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: bold;">🔑 Reset Password</a>
+            <a href="{{ url_for('main.reset_password', user_id=u.id) }}" class="action-btn reset">🔑 Reset Password</a>
           </div>
         {% endif %}
       </td>

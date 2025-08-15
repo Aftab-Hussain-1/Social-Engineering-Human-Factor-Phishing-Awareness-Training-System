@@ -2,6 +2,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.clickable-row').forEach(function(row) {
+        row.addEventListener('click', function() {
+            var behaviorId = this.getAttribute('data-behavior-id');
+            window.location = '/admin/risk_behavior/' + behaviorId;
+        });
+    });
+});
+</script>
 <style>
   h2 {
     text-align: center;
@@ -202,7 +212,7 @@
     <th>Actions</th>
   </tr>
   {% for behavior in behaviors.items %}
-  <tr style="cursor: pointer;" onclick="window.location='{{ url_for('main.view_risk_behavior', behavior_id=behavior.id) }}'">
+  <tr style="cursor: pointer;" data-behavior-id="{{ behavior.id }}" class="clickable-row">
     <td>{{ ((behaviors.page - 1) * behaviors.per_page) + loop.index }}</td>
     <td>{{ behavior.user.username if behavior.user else 'Anonymous' }}</td>
     <td>

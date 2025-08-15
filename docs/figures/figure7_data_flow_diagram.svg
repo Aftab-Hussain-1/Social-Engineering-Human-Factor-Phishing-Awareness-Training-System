@@ -1,0 +1,183 @@
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .entity-title { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; text-anchor: middle; }
+      .process-title { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; text-anchor: middle; }
+      .data-label { font-family: Arial, sans-serif; font-size: 9px; text-anchor: middle; }
+      .flow-label { font-family: Arial, sans-serif; font-size: 8px; text-anchor: middle; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .data-arrow { stroke: #2196f3; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .external-entity { fill: #f8f9fa; stroke: #343a40; stroke-width: 2; }
+      .process { fill: #007bff; stroke: #0056b3; stroke-width: 2; rx: 10; }
+      .data-store { fill: #28a745; stroke: #1e7e34; stroke-width: 2; }
+      .data-flow { stroke: #dc3545; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" class="title">Figure 7: Data Flow Diagram</text>
+  
+  <!-- External Entities -->
+  <!-- User -->
+  <rect x="50" y="100" width="100" height="60" class="external-entity"/>
+  <text x="100" y="125" class="entity-title">User</text>
+  <text x="100" y="140" class="data-label">(End User)</text>
+  
+  <!-- Administrator -->
+  <rect x="750" y="100" width="100" height="60" class="external-entity"/>
+  <text x="800" y="125" class="entity-title">Administrator</text>
+  <text x="800" y="140" class="data-label">(System Admin)</text>
+  
+  <!-- Web Browser -->
+  <rect x="50" y="250" width="100" height="60" class="external-entity"/>
+  <text x="100" y="275" class="entity-title">Web Browser</text>
+  <text x="100" y="290" class="data-label">(Chrome/Firefox)</text>
+  
+  <!-- Processes -->
+  <!-- Authentication Process -->
+  <ellipse cx="300" cy="130" rx="80" ry="40" class="process"/>
+  <text x="300" y="125" class="process-title" fill="white">1.0</text>
+  <text x="300" y="140" class="process-title" fill="white">Authentication</text>
+  
+  <!-- URL Monitoring Process -->
+  <ellipse cx="300" cy="280" rx="80" ry="40" class="process"/>
+  <text x="300" y="275" class="process-title" fill="white">2.0</text>
+  <text x="300" y="290" class="process-title" fill="white">URL Monitoring</text>
+  
+  <!-- Phishing Detection Process -->
+  <ellipse cx="500" cy="280" rx="80" ry="40" class="process"/>
+  <text x="500" y="275" class="process-title" fill="white">3.0</text>
+  <text x="500" y="290" class="process-title" fill="white">Phishing Detection</text>
+  
+  <!-- Risk Assessment Process -->
+  <ellipse cx="500" cy="430" rx="80" ry="40" class="process"/>
+  <text x="500" y="425" class="process-title" fill="white">4.0</text>
+  <text x="500" y="440" class="process-title" fill="white">Risk Assessment</text>
+  
+  <!-- Training Management Process -->
+  <ellipse cx="700" cy="280" rx="80" ry="40" class="process"/>
+  <text x="700" y="275" class="process-title" fill="white">5.0</text>
+  <text x="700" y="290" class="process-title" fill="white">Training Mgmt</text>
+  
+  <!-- Reporting Process -->
+  <ellipse cx="700" cy="430" rx="80" ry="40" class="process"/>
+  <text x="700" y="425" class="process-title" fill="white">6.0</text>
+  <text x="700" y="440" class="process-title" fill="white">Report Generation</text>
+  
+  <!-- Data Stores -->
+  <!-- User Database -->
+  <rect x="250" y="50" width="100" height="30" class="data-store"/>
+  <text x="300" y="70" class="data-label" fill="white">D1: User Database</text>
+  
+  <!-- Phishing Database -->
+  <rect x="450" y="180" width="100" height="30" class="data-store"/>
+  <text x="500" y="200" class="data-label" fill="white">D2: Phishing DB</text>
+  
+  <!-- Behavior Log -->
+  <rect x="250" y="380" width="100" height="30" class="data-store"/>
+  <text x="300" y="400" class="data-label" fill="white">D3: Behavior Log</text>
+  
+  <!-- Training Content -->
+  <rect x="650" y="180" width="100" height="30" class="data-store"/>
+  <text x="700" y="200" class="data-label" fill="white">D4: Training Content</text>
+  
+  <!-- Analytics Database -->
+  <rect x="650" y="530" width="100" height="30" class="data-store"/>
+  <text x="700" y="550" class="data-label" fill="white">D5: Analytics DB</text>
+  
+  <!-- Session Storage -->
+  <rect x="450" y="50" width="100" height="30" class="data-store"/>
+  <text x="500" y="70" class="data-label" fill="white">D6: Session Store</text>
+  
+  <!-- Data Flows -->
+  <!-- User to Authentication -->
+  <line x1="150" y1="130" x2="220" y2="130" class="data-flow"/>
+  <text x="185" y="125" class="flow-label">Login Credentials</text>
+  
+  <!-- Authentication to User DB -->
+  <line x1="300" y1="90" x2="300" y2="80" class="data-flow"/>
+  <text x="320" y="85" class="flow-label">Verify User</text>
+  
+  <!-- Authentication to Session -->
+  <line x1="380" y1="130" x2="450" y2="70" class="data-flow"/>
+  <text x="415" y="95" class="flow-label">Create Session</text>
+  
+  <!-- Browser to URL Monitoring -->
+  <line x1="150" y1="280" x2="220" y2="280" class="data-flow"/>
+  <text x="185" y="275" class="flow-label">URL Data</text>
+  
+  <!-- URL Monitoring to Phishing Detection -->
+  <line x1="380" y1="280" x2="420" y2="280" class="data-flow"/>
+  <text x="400" y="275" class="flow-label">URL Info</text>
+  
+  <!-- Phishing Detection to Phishing DB -->
+  <line x1="500" y1="240" x2="500" y2="210" class="data-flow"/>
+  <text x="520" y="225" class="flow-label">Query</text>
+  
+  <!-- Phishing Detection to Risk Assessment -->
+  <line x1="500" y1="320" x2="500" y2="390" class="data-flow"/>
+  <text x="520" y="355" class="flow-label">Risk Data</text>
+  
+  <!-- Risk Assessment to Behavior Log -->
+  <line x1="420" y1="430" x2="350" y2="395" class="data-flow"/>
+  <text x="385" y="410" class="flow-label">Log Entry</text>
+  
+  <!-- Training Management to Training Content -->
+  <line x1="700" y1="240" x2="700" y2="210" class="data-flow"/>
+  <text x="720" y="225" class="flow-label">Content</text>
+  
+  <!-- Training Management to User -->
+  <line x1="620" y1="280" x2="150" y2="130" class="data-flow" stroke-dasharray="5,5"/>
+  <text x="385" y="200" class="flow-label">Training Materials</text>
+  
+  <!-- Reporting to Analytics DB -->
+  <line x1="700" y1="470" x2="700" y2="530" class="data-flow"/>
+  <text x="720" y="500" class="flow-label">Store Reports</text>
+  
+  <!-- Behavior Log to Reporting -->
+  <line x1="350" y1="395" x2="620" y2="430" class="data-flow"/>
+  <text x="485" y="410" class="flow-label">Behavior Data</text>
+  
+  <!-- Administrator flows -->
+  <line x1="750" y1="130" x2="780" y2="280" class="data-flow"/>
+  <text x="780" y="205" class="flow-label">Manage System</text>
+  
+  <line x1="750" y1="430" x2="780" y2="430" class="data-flow"/>
+  <text x="765" y="425" class="flow-label">View Reports</text>
+  
+  <!-- Warning flows back to user -->
+  <line x1="420" y1="280" x2="150" y2="280" class="data-flow" stroke="#f44336"/>
+  <text x="285" y="295" class="flow-label">Phishing Warning</text>
+  
+  <!-- Data Flow Legend -->
+  <text x="50" y="600" class="entity-title">Legend:</text>
+  
+  <!-- External Entity Legend -->
+  <rect x="50" y="610" width="60" height="30" class="external-entity"/>
+  <text x="80" y="630" class="data-label">External Entity</text>
+  
+  <!-- Process Legend -->
+  <ellipse cx="180" cy="625" rx="40" ry="15" class="process"/>
+  <text x="180" y="630" class="data-label" fill="white">Process</text>
+  
+  <!-- Data Store Legend -->
+  <rect x="250" y="610" width="60" height="30" class="data-store"/>
+  <text x="280" y="630" class="data-label" fill="white">Data Store</text>
+  
+  <!-- Data Flow Legend -->
+  <line x1="350" y1="625" x2="400" y2="625" class="data-flow"/>
+  <text x="425" y="630" class="data-label">Data Flow</text>
+  
+  <!-- Data Types -->
+  <text x="500" y="620" class="entity-title">Key Data Types:</text>
+  <text x="500" y="635" class="flow-label">• User Credentials & Profiles</text>
+  <text x="500" y="645" class="flow-label">• URL & Domain Information</text>
+  <text x="500" y="655" class="flow-label">• Phishing Signatures & Patterns</text>
+  <text x="500" y="665" class="flow-label">• Risk Scores & Assessments</text>
+  <text x="500" y="675" class="flow-label">• User Behavior & Interactions</text>
+  <text x="500" y="685" class="flow-label">• Training Progress & Results</text>
+</svg>
